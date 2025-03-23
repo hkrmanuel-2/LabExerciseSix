@@ -1,0 +1,396 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nana Ntim | Portfolio</title>
+    <style>
+        :root {
+            --bg: #fafafa;
+            --text: #222;
+            --accent: #333;
+            --highlight: #0066ff;
+            --muted: #777;
+            --border: #eaeaea;
+            --card: #fff;
+            --transition: all 0.25s ease;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+            background-color: var(--bg);
+            color: var(--text);
+            line-height: 1.6;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+
+        header {
+            padding: 6rem 0 4rem;
+        }
+
+        .name {
+            font-size: 2.5rem;
+            font-weight: 700;
+            letter-spacing: -0.02em;
+            margin-bottom: 0.5rem;
+        }
+
+        .title {
+            font-size: 1.2rem;
+            color: var(--muted);
+            margin-bottom: 2rem;
+            font-weight: 400;
+        }
+
+        .intro {
+            max-width: 600px;
+            margin-bottom: 3rem;
+        }
+
+        .accent-line {
+            display: inline-block;
+            width: 2rem;
+            height: 0.25rem;
+            background-color: var(--highlight);
+            margin-bottom: 2rem;
+            transition: var(--transition);
+        }
+
+        section {
+            padding: 4rem 0;
+            border-top: 1px solid var(--border);
+        }
+
+        h2 {
+            font-size: 1.75rem;
+            margin-bottom: 2rem;
+            font-weight: 600;
+            letter-spacing: -0.01em;
+        }
+
+        .interests {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 2rem;
+        }
+
+        .interest-card {
+            background-color: var(--card);
+            padding: 2rem;
+            border-radius: 0.5rem;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+            transition: var(--transition);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .interest-card:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 20px rgba(0,0,0,0.05);
+        }
+
+        .interest-card:hover .interest-icon {
+            color: var(--highlight);
+        }
+
+        .interest-card:hover::before {
+            transform: scaleX(1);
+        }
+
+        .interest-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 3px;
+            background-color: var(--highlight);
+            transform: scaleX(0);
+            transform-origin: left;
+            transition: transform 0.3s ease;
+        }
+
+        .interest-icon {
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+            transition: var(--transition);
+        }
+
+        .interest-title {
+            font-size: 1.2rem;
+            margin-bottom: 1rem;
+            font-weight: 600;
+        }
+
+        .interest-description {
+            color: var(--muted);
+            font-size: 0.95rem;
+            line-height: 1.7;
+        }
+
+        .skills {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.75rem;
+            margin-top: 3rem;
+        }
+
+        .skill {
+            padding: 0.5rem 1rem;
+            background-color: var(--card);
+            border: 1px solid var(--border);
+            border-radius: 2rem;
+            font-size: 0.875rem;
+            transition: var(--transition);
+        }
+
+        .skill:hover {
+            background-color: var(--highlight);
+            color: white;
+            border-color: var(--highlight);
+        }
+
+        .cta {
+            text-align: center;
+            padding: 5rem 0;
+        }
+
+        footer {
+            padding: 3rem 0;
+            text-align: center;
+            color: var(--muted);
+            font-size: 0.875rem;
+            border-top: 1px solid var(--border);
+        }
+
+        /* Dark mode toggle */
+        .theme-toggle {
+            position: fixed;
+            top: 2rem;
+            right: 2rem;
+            background: none;
+            border: none;
+            cursor: pointer;
+            width: 2.5rem;
+            height: 2.5rem;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background-color: var(--card);
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            z-index: 100;
+            transition: var(--transition);
+        }
+
+        .theme-toggle:hover {
+            transform: rotate(15deg);
+        }
+
+        .theme-icon {
+            width: 1.2rem;
+            height: 1.2rem;
+            transition: var(--transition);
+        }
+
+        /* Dark mode styles */
+        body.dark-mode {
+            --bg: #121212;
+            --text: #fff;
+            --accent: #eee;
+            --highlight: #3d84ff;
+            --muted: #aaa;
+            --border: #2a2a2a;
+            --card: #1c1c1c;
+        }
+
+        body.dark-mode .theme-icon-dark {
+            display: none;
+        }
+
+        body:not(.dark-mode) .theme-icon-light {
+            display: none;
+        }
+
+        /* Animation on scroll */
+        .fade-in {
+            opacity: 0;
+            transform: translateY(20px);
+            transition: opacity 0.6s ease, transform 0.6s ease;
+        }
+
+        .fade-in.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            header {
+                padding: 4rem 0 2rem;
+            }
+
+            .name {
+                font-size: 2rem;
+            }
+
+            section {
+                padding: 3rem 0;
+            }
+
+            .interests {
+                grid-template-columns: 1fr;
+            }
+
+            .theme-toggle {
+                top: 1rem;
+                right: 1rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Dark mode toggle -->
+    <button class="theme-toggle" aria-label="Toggle dark mode">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="theme-icon theme-icon-dark">
+            <circle cx="12" cy="12" r="5"></circle>
+            <line x1="12" y1="1" x2="12" y2="3"></line>
+            <line x1="12" y1="21" x2="12" y2="23"></line>
+            <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+            <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+            <line x1="1" y1="12" x2="3" y2="12"></line>
+            <line x1="21" y1="12" x2="23" y2="12"></line>
+            <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+            <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+        </svg>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="theme-icon theme-icon-light">
+            <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+        </svg>
+    </button>
+
+    <header>
+        <div class="container">
+            <div class="fade-in">
+                <h1 class="name">Nana Yaw Asamoah Ntim</h1>
+                <p class="title">UI/UX Designer & Developer</p>
+                <span class="accent-line"></span>
+                <p class="intro">I guess you could say I'm a creative developer with a passion for crafting nice-looking platforms. I find joy in bringing aesthetic software to life and telling stories through design and film.</p>
+            </div>
+        </div>
+    </header>
+
+    <section id="interests">
+        <div class="container">
+            <div class="fade-in">
+                <h2>What I Do</h2>
+                <div class="interests">
+                    <div class="interest-card">
+                        <div class="interest-icon">✦</div>
+                        <h3 class="interest-title">UI/UX Design</h3>
+                        <p class="interest-description">I create intuitive interfaces that balance form and function. My approach looks at understanding user needs and crafting experiences that feel natural and delightful to use.</p>
+                    </div>
+                    <div class="interest-card">
+                        <div class="interest-icon">◆</div>
+                        <h3 class="interest-title">Filmmaking</h3>
+                        <p class="interest-description">Visual storytelling allows me to explore narratives from different perspectives. I enjoy the entire process from storyboarding to editing, with a particular focus on composition and lighting.</p>
+                    </div>
+                    <div class="interest-card">
+                        <div class="interest-icon">◈</div>
+                        <h3 class="interest-title">Aesthetic Software</h3>
+                        <p class="interest-description">I believe software should be both functional and beautiful. I develop applications with attention to detail, ensuring that every interaction feels purposeful and visually coherent.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="fade-in">
+                <div class="skills">
+                    <span class="skill">Interaction Design</span>
+                    <span class="skill">Prototyping</span>
+                    <span class="skill">Frontend Development</span>
+                    <span class="skill">User Research</span>
+                    <span class="skill">Information Architecture</span>
+                    <span class="skill">Visual Design</span>
+                    <span class="skill">Motion Design</span>
+                    <span class="skill">Storyboarding</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="philosophy" class="fade-in">
+        <div class="container">
+            <h2>My Approach</h2>
+            <p>I believe that the best designs emerge from a deep understanding of the problem space and the people involved. My work is guided by a few core principles:</p>
+            <ul style="list-style: none; margin-top: 1rem; margin-bottom: 1rem;">
+                <li style="margin-bottom: 0.75rem;">• Simplicity over complexity</li>
+                <li style="margin-bottom: 0.75rem;">• Attention to detail without overdesigning</li>
+                <li style="margin-bottom: 0.75rem;">• Form follows function, but beauty matters</li>
+                <li style="margin-bottom: 0.75rem;">• Design should feel invisible yet memorable</li>
+            </ul>
+            <p>These principles help me create work that balances aesthetics with usability, ensuring that the end result is both beautiful and purposeful.</p>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container">
+            <p>CS 415: Software Engineering | Lab Exercise 6 | March 2025</p>
+        </div>
+    </footer>
+
+    <script>
+        // Dark mode toggle
+        const themeToggle = document.querySelector('.theme-toggle');
+        const prefersDarkScheme = window.matchMedia('(prefers-color-scheme: dark)');
+        
+        // Check for saved theme preference or use user's system preference
+        const currentTheme = localStorage.getItem('theme') || 
+                            (prefersDarkScheme.matches ? 'dark' : 'light');
+        
+        // Set initial theme
+        if (currentTheme === 'dark') {
+            document.body.classList.add('dark-mode');
+        }
+        
+        // Toggle theme on button click
+        themeToggle.addEventListener('click', () => {
+            document.body.classList.toggle('dark-mode');
+            
+            // Save preference
+            const theme = document.body.classList.contains('dark-mode') ? 'dark' : 'light';
+            localStorage.setItem('theme', theme);
+        });
+        
+        // Fade-in animation on scroll
+        const fadeElements = document.querySelectorAll('.fade-in');
+        
+        // Initial check on load
+        checkFade();
+        
+        // Check elements on scroll
+        window.addEventListener('scroll', checkFade);
+        
+        function checkFade() {
+            const triggerBottom = window.innerHeight * 0.9;
+            
+            fadeElements.forEach(element => {
+                const elementTop = element.getBoundingClientRect().top;
+                
+                if (elementTop < triggerBottom) {
+                    element.classList.add('visible');
+                }
+            });
+        }
+    </script>
+</body>
+</html>
