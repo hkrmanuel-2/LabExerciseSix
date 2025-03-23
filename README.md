@@ -3,7 +3,7 @@
 
 ## Team Members
 - Nana Yaw Asamoah Ntim
-- Member 2
+- Emmanuel Adotey Acquaye
 - Member 3
 - Member 4
 
