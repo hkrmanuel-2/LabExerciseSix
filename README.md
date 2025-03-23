@@ -2,7 +2,7 @@
 # Team Project - Static Website
 
 ## Team Members
-- Member 1
+- Nana Yaw Asamoah Ntim
 - Member 2
 - Member 3
 - Member 4
