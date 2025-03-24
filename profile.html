@@ -1,0 +1,348 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bryan Hans-Ampiah | Profile</title>
+    <style>
+        :root {
+            --primary-color: #3a86ff;
+            --secondary-color: #8338ec;
+            --text-color: #2b2d42;
+            --light-text: #5c6177;
+            --bg-color: #f8f9fa;
+            --card-bg: #ffffff;
+            --shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+            --border-radius: 12px;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        body {
+            line-height: 1.6;
+            color: var(--text-color);
+            background-color: var(--bg-color);
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 40px 20px;
+        }
+        
+        .header {
+            text-align: center;
+            margin-bottom: 40px;
+        }
+        
+        h1 {
+            font-size: 42px;
+            margin-bottom: 5px;
+            font-weight: 600;
+            background: linear-gradient(45deg, var(--primary-color), var(--secondary-color));
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            letter-spacing: 0.5px;
+        }
+        
+        .subtitle {
+            font-size: 18px;
+            color: var(--light-text);
+            margin-bottom: 10px;
+        }
+        
+        .main-content {
+            display: flex;
+            justify-content: space-between;
+            margin: 0 auto;
+            max-width: 1000px;
+            gap: 30px;
+        }
+        
+        .left-column, .right-column {
+            background-color: var(--card-bg);
+            border-radius: var(--border-radius);
+            padding: 30px;
+            box-shadow: var(--shadow);
+            transition: transform 0.3s ease;
+        }
+        
+        .left-column:hover, .right-column:hover {
+            transform: translateY(-5px);
+        }
+        
+        .left-column {
+            flex: 1.4;
+        }
+        
+        .right-column {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        
+        h2 {
+            font-size: 22px;
+            margin-bottom: 20px;
+            position: relative;
+            display: inline-block;
+        }
+        
+        h2::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 40px;
+            height: 3px;
+            background: linear-gradient(45deg, var(--primary-color), var(--secondary-color));
+            border-radius: 3px;
+        }
+        
+        .about-text {
+            font-size: 15px;
+            line-height: 1.7;
+            color: var(--light-text);
+            margin-bottom: 20px;
+        }
+        
+        .about-text p {
+            margin-bottom: 15px;
+        }
+        
+        .profile-img-container {
+            position: relative;
+            width: 170px;
+            height: 170px;
+            margin-bottom: 30px;
+        }
+        
+        .profile-img {
+            width: 100%;
+            height: 100%;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 5px solid white;
+            box-shadow: var(--shadow);
+        }
+        
+        .profile-img-bg {
+            position: absolute;
+            top: -8px;
+            left: -8px;
+            width: calc(100% + 16px);
+            height: calc(100% + 16px);
+            border-radius: 50%;
+            background: linear-gradient(45deg, var(--primary-color), var(--secondary-color));
+            z-index: -1;
+        }
+        
+        .details-section {
+            width: 100%;
+        }
+        
+        .details-item {
+            margin-bottom: 15px;
+            padding-bottom: 15px;
+            border-bottom: 1px solid rgba(0,0,0,0.05);
+        }
+        
+        .details-item:last-child {
+            border-bottom: none;
+        }
+        
+        .details-label {
+            font-weight: 600;
+            display: block;
+            font-size: 14px;
+            color: var(--primary-color);
+            margin-bottom: 3px;
+        }
+        
+        .details-value {
+            font-size: 16px;
+        }
+        
+        .skills-section {
+            margin-top: 25px;
+            width: 100%;
+        }
+        
+        .skill-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            margin-top: 15px;
+        }
+        
+        .skill-tag {
+            background: linear-gradient(45deg, rgba(58, 134, 255, 0.1), rgba(131, 56, 236, 0.1));
+            color: var(--primary-color);
+            padding: 6px 12px;
+            border-radius: 20px;
+            font-size: 13px;
+            font-weight: 500;
+        }
+        
+        .social-icons {
+            display: flex;
+            gap: 15px;
+            margin-top: 25px;
+            justify-content: center;
+            width: 100%;
+        }
+        
+        .social-icon {
+            color: white;
+            background: linear-gradient(45deg, var(--primary-color), var(--secondary-color));
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 18px;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+        
+        .social-icon:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+        }
+        
+        .footer {
+            margin-top: 40px;
+            text-align: center;
+        }
+        
+        .footer a {
+            color: var(--primary-color);
+            text-decoration: none;
+            background-color: rgba(58, 134, 255, 0.1);
+            padding: 8px 20px;
+            border-radius: 50px;
+            transition: all 0.3s ease;
+        }
+        
+        .footer a:hover {
+            background-color: var(--primary-color);
+            color: white;
+        }
+        
+        @media (max-width: 900px) {
+            .main-content {
+                flex-direction: column;
+            }
+            
+            .right-column {
+                align-items: flex-start;
+            }
+            
+            .profile-img-container {
+                margin: 0 auto 30px;
+            }
+            
+            .social-icons {
+                justify-content: flex-start;
+            }
+        }
+    </style>
+    <!-- Font Awesome for social icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+</head>
+<body>
+    <div class="header">
+        <h1>Bryan Hans-Ampiah</h1>
+        <p class="subtitle">Computer Science Student</p>
+    </div>
+    
+    <div class="main-content">
+        <div class="left-column">
+            <h2>About me</h2>
+            <div class="about-text">
+                <p>
+                    I am an Ashesi University student with a passion for 3D design and animation. 
+                    For leisure, I love to engage in activities that express my creativity, such as drawing, graphic design, and photography.
+                </p>
+                <p>
+                    I enjoy exploring different artistic styles and experimenting with new techniques to bring my ideas to life. 
+                    My interests extend to game design, visual effects (VFX), and motion graphics, where I use various design tools and animation software to create compelling visuals.
+                </p>
+                <p>
+                    I also have a keen interest in procedural animation, character rigging, and physics simulations, which allow me to push the boundaries of digital creativity. 
+                    Additionally, I love crafting immersive environments for games and animations, blending storytelling with dynamic visuals to enhance user experience.
+                </p>
+            </div>
+            
+            <div class="skills-section">
+                <h2>Skills</h2>
+                <div class="skill-tags">
+                    <span class="skill-tag">3D Modeling</span>
+                    <span class="skill-tag">Animation</span>
+                    <span class="skill-tag">Graphic Design</span>
+                    <span class="skill-tag">Photography</span>
+                    <span class="skill-tag">Game Design</span>
+                    <span class="skill-tag">Visual Effects</span>
+                    <span class="skill-tag">Character Rigging</span>
+                    <span class="skill-tag">Programming</span>
+                </div>
+            </div>
+        </div>
+        
+        <div class="right-column">
+            <div class="profile-img-container">
+                <div class="profile-img-bg"></div>
+                <img src="photo_2025-03-24_15-50-20.jpg" alt="Profile Picture" class="profile-img">
+            </div>
+            
+            <div class="details-section">
+                <h2>Details</h2>
+                
+                <div class="details-item">
+                    <span class="details-label">Name</span>
+                    <span class="details-value">Bryan Hans-Ampiah</span>
+                </div>
+                
+                <div class="details-item">
+                    <span class="details-label">Age</span>
+                    <span class="details-value">20 years</span>
+                </div>
+                
+                <div class="details-item">
+                    <span class="details-label">Location</span>
+                    <span class="details-value">Accra, Ghana</span>
+                </div>
+                
+                <div class="details-item">
+                    <span class="details-label">Education</span>
+                    <span class="details-value">Ashesi University</span>
+                </div>
+            </div>
+            
+            <div class="social-icons">
+                <a href="#" class="social-icon" aria-label="Facebook">
+                    <i class="fab fa-facebook-f"></i>
+                </a>
+                <a href="#" class="social-icon" aria-label="Twitter">
+                    <i class="fab fa-twitter"></i>
+                </a>
+                <a href="#" class="social-icon" aria-label="Instagram">
+                    <i class="fab fa-instagram"></i>
+                </a>
+                <a href="#" class="social-icon" aria-label="LinkedIn">
+                    <i class="fab fa-linkedin-in"></i>
+                </a>
+            </div>
+        </div>
+    </div>
+    
+    <div class="footer">
+        <a href="index.html">Back to Home</a>
+    </div>
+</body>
+</html>
