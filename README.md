@@ -4,7 +4,6 @@
 ## Team Members
 - Nana Yaw Asamoah Ntim
 - Emmanuel Adotey Acquaye
-- Member 3
 - Denis Aggyratus Demitrus
 - Bryan Joojo Hans-Ampiah
 - Akwesi Ntim Duodu
