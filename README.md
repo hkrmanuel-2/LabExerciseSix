@@ -5,7 +5,9 @@
 - Nana Yaw Asamoah Ntim
 - Emmanuel Adotey Acquaye
 - Member 3
-- Member 4
+- Denis Aggyratus Demitrus
+- Bryan Joojo Hans-Ampiah
+- Akwesi Ntim Duodu
 
 ## Project Description
 This project is a simple static website demonstrating Git and GitHub workflows. It consists of a landing page that links to individual profile pages for each team member.
@@ -18,6 +20,7 @@ This project is a simple static website demonstrating Git and GitHub workflows. 
 │── member2.html  # Profile page for Member 2
 │── member3.html  # Profile page for Member 3
 │── member4.html  # Profile page for Member 4
+|—— member5.html  # Profile page for Member 5
 │── README.md  # Project documentation
 ```
 
